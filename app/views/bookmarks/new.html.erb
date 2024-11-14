@@ -1,0 +1,9 @@
+
+<h1>New bookmark</h1>
+
+<%= simple_form_for @bookmark do |f| %>
+  <%= f.input :name %>
+  <%= f.association :list %>
+  <%= f.association :movie %>
+  <%= f.button :submit %>
+<% end %>

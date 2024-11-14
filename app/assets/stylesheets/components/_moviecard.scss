@@ -1,0 +1,27 @@
+.movie-card {
+  position:relative;
+  background-color: rgb(255, 245, 199);
+  display: flex;
+  width: 800px;
+  height: 300px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  margin: 8px;
+  padding: 16px;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.452);
+}
+
+.movie-card img {
+  height: 100%;
+  margin-right: 8px;
+}
+
+.movie-card .btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 40px;
+  border-radius: 8px;
+  margin: 8px;
+  width: 180px;
+}

@@ -1,0 +1,30 @@
+<div class="container my-5">
+  <h2>List name: <%= @list.name.capitalize %></h2>
+
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.association :movie, collection: Movie.all.order(:title), prompt: "Choose a movie" %>
+    <%= f.input :comment %>
+    <%= f.button :submit %>
+  <% end %>
+  <h2>Movies:</h2>
+  <div class="movie-cards-grid my-3" >
+    <% @list.movies.each do |movie| %>
+    <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+      <div class="movie-card">
+        <img src="<%= movie.poster_url %>" alt=<%movie.title%>>
+        <h4><%= movie.title %></h4>
+        <%= movie.id %>
+        <p><%= bookmark.comment %></p>
+        <%= link_to "Delete Bookmark",
+        bookmark_path(movie), data: {turbo_method: :delete}, class: "btn btn-primary" %>
+      </div>
+    <% end  %>
+  </div>
+
+  <%= link_to "Delete List",
+    list_path(@list),
+    data: {turbo_method: :delete }
+  %>
+
+  <p><%= link_to "Back to overview", lists_path %></p>
+</div>
